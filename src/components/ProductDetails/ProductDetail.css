@@ -1,4 +1,4 @@
-/* Estilo para centrar el contenido en la página de detalle */
+
 .product-detail-container {
     display: flex;
     flex-direction: column;
@@ -7,10 +7,10 @@
     text-align: center;
   }
   
-  /* Estilo para la imagen del producto */
+  
   .product-detail-container img {
     max-width: 100%;
-    max-height: 300px; /* Ajusta la altura máxima según tus necesidades */
-    margin-bottom: 20px; /* Espacio entre la imagen y el texto */
+    max-height: 300px; 
+    margin-bottom: 20px; 
   }
   
