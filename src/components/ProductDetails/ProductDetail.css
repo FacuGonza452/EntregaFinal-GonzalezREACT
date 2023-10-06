@@ -1,16 +1,54 @@
 
+/* Estilos para el contenedor principal de detalles del producto */
 .product-detail-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-    text-align: center;
-  }
-  
-  
-  .product-detail-container img {
-    max-width: 100%;
-    max-height: 300px; 
-    margin-bottom: 20px; 
-  }
-  
+  padding: 20px;
+  background-color: #f7f7f7;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+/* Estilos para el título del producto */
+.product-title {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+/* Estilos para la imagen del producto */
+.product-image {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+/* Estilos para la descripción del producto */
+.product-description {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #666;
+}
+
+/* Estilos para el precio del producto */
+.product-price {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Estilos para los botones de agregar y quitar del carrito */
+.product-buttons button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+/* Estilos para el botón de quitar del carrito */
+.product-buttons .remove-from-cart-button {
+  background-color: #dc3545;
+}

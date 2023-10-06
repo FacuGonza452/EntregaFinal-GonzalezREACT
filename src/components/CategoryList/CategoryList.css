@@ -1,0 +1,45 @@
+/* CategoryList.css */
+
+/* Estilos para el contenedor principal */
+.category-list-container {
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Estilos para el título de categorías */
+  .category-list-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  /* Estilos para la lista de categorías */
+  .category-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  /* Estilos para los elementos de la lista de categorías */
+  .category-item {
+    margin-bottom: 10px;
+  }
+  
+  /* Estilos para los enlaces de categorías */
+  .category-link {
+    text-decoration: none;
+    color: #007bff;
+    transition: color 0.3s ease;
+  }
+  
+  /* Estilos para los enlaces de categorías al pasar el mouse */
+  .category-link:hover {
+    color: #0056b3;
+  }
+  
+  /* Estilos para los nombres de categorías */
+  .category-name {
+    font-size: 18px;
+  }
+  

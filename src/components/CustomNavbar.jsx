@@ -1,8 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import CartWidget from './CartWidget/CartWidget';
+import { useCart } from './Context/CartContext';
 
 const CustomNavbar = () => {
+  const { cart } = useCart();
+
+  const calculateTotalItems = () => {
+    return cart.reduce((total, product) => total + product.quantity, 0);
+  };
+
+  const totalItems = calculateTotalItems();
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container">
@@ -19,7 +27,9 @@ const CustomNavbar = () => {
               <Link className="nav-link" to="/categories">Categorias</Link>
             </li>
             <li className="nav-item">
-              <CartWidget />
+              <Link className="nav-link" to="/cart">
+                {totalItems > 0 ? `Carrito (${totalItems})` : 'Carrito'}
+              </Link>
             </li>
           </ul>
         </div>

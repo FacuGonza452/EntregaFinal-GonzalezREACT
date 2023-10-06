@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
-import CustomNavbar from './components/Navbar';
+import CustomNavbar from './components/CustomNavbar';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
-import CategoryList from './components/CategoryList';
+import CategoryList from './components/CategoryList/CategoryList';
 import ProductDetail from './components/ProductDetails/ProductDetail';
+import CartPage from './components/CartPage/CartPage';
+import { CartProvider } from './components/Context/CartContext'; 
+
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -15,32 +18,37 @@ const App = () => {
   }, []);
 
   return (
-    <BrowserRouter>
-      <CustomNavbar />
-      {isLoading ? (
-        <div className="text-center" style={{ minHeight: '100vh' }}>
-          <h3>Cargando...</h3>
-          <div className="spinner-border" role="status">
-            <span className="visually-hidden">Cargando...</span>
+    <CartProvider> 
+      <BrowserRouter>
+        <CustomNavbar />
+        {isLoading ? (
+          <div className="text-center" style={{ minHeight: '100vh' }}>
+            <h3>Cargando...</h3>
+            <div className="spinner-border" role="status">
+              <span className="visually-hidden">Cargando...</span>
+            </div>
           </div>
-        </div>
-      ) : (
-        <>
-          <Route path="/" exact>
-            <ItemListContainer greeting="¡Bienvenido a nuestra tienda en línea!" />
-          </Route>
-          <Route path="/category/:idCategory">
-            <ItemListContainer />
-          </Route>
-          <Route path="/id/:id">
-            <ProductDetail />
-          </Route>
-          <Route path="/categories">
-            <CategoryList />
-          </Route>
-        </>
-      )}
-    </BrowserRouter>
+        ) : (
+          <>
+           <Route path="/" exact>
+              <ItemListContainer greeting="¡Bienvenido a nuestra tienda en línea!" />
+            </Route>
+            <Route path="/category/:idCategory">
+              <ItemListContainer />
+            </Route>
+            <Route path="/id/:id">
+              <ProductDetail />
+            </Route>
+            <Route path="/categories">
+              <CategoryList />
+            </Route>
+            <Route path="/cart">
+              <CartPage /> 
+            </Route>
+          </>
+        )}
+      </BrowserRouter>
+    </CartProvider> 
   );
 };
 

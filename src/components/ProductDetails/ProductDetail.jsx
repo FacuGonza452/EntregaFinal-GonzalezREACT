@@ -1,44 +1,34 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
+import { mockFetchProductDetail } from '../utils/mockFetch';
 import './ProductDetail.css';
-
-const products = [
-  {
-    id: 1,
-    title: 'Teclado Kumura k552',
-    description: 'Este es un teclado mecánico de alta calidad...',
-    image: '/img/teclado.jpg',
-  },
-  {
-    id: 2,
-    title: 'Monitor Curvo Philips',
-    description: 'Este es un monitor curvo con excelentes características...',
-    image: '/img/monitor-curvo.jpg',
-  },
-  {
-    id: 3,
-    title: 'Mouse Logitech G203',
-    description: 'Este es un mouse de gaming con seguimiento preciso...',
-    image: '/img/Mouse.jpg',
-  },
-];
 
 const ProductDetail = () => {
   const { id } = useParams();
+  const { addToCart, removeFromCart } = useCart();
+  const [product, setProduct] = useState(null);
 
-  const product = products.find(producto => producto.id === parseInt(id));
+  useEffect(() => {
+    mockFetchProductDetail(parseInt(id))
+      .then(setProduct)
+      .catch(console.error);
+  }, [id]);
 
-  if (!product) {
-    return <div>Producto no encontrado</div>;
-  }
-
-  return (
+  return !product ? null : (
     <div className="product-detail-container">
-      <h2>{product.title}</h2>
-      <img src={product.image} alt={product.title} />
-      <p>Nombre: {product.title}</p>
-      <p>Detalles del producto:</p>
-      <p>{product.description}</p>
+      <h2 className="product-title">{product.title}</h2>
+      <img src={product.image} alt={product.title} className="product-image" />
+      <p className="product-description">Descripción: {product.description}</p>
+      <p className="product-price">Precio: ${product.price}</p>
+      <div className="product-buttons">
+        <button onClick={() => addToCart(product)} className="add-to-cart-button">
+          Agregar al carrito
+        </button>
+        <button onClick={() => removeFromCart(product.id)} className="remove-from-cart-button">
+          Quitar del carrito
+        </button>
+      </div>
     </div>
   );
 };
